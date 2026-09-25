@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Чёрно-белый фотодень — Юлия Алейникова</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF8;
+    --paper-dim:#EFECE6;
+    --ink:#141412;
+    --grey:#6E6C67;
+    --grey-light:#B9B6AF;
+    --safelight:#B7312C;
+    --safelight-dim:#8f2621;
+    --rule: 1px solid rgba(20,20,18,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; line-height:1.08; letter-spacing:-0.01em;}
+  a{color:inherit;}
+ 
+  /* ---------- top bar ---------- */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 28px; max-width:1120px; margin:0 auto;
+    border-bottom:var(--rule);
+  }
+  .brand{font-family:'Fraunces', serif; font-size:19px; font-weight:500;}
+  .brand em{font-style:italic; color:var(--grey);}
+  .topbar-cities{font-size:13px; color:var(--grey); display:flex; gap:18px;}
+ 
+  /* ---------- hero ---------- */
+  .hero{
+    padding:76px 0 64px;
+    border-bottom:var(--rule);
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.6vw, 64px);
+    max-width:12.5ch;
+    opacity:0; transform:translateY(14px);
+    animation:rise 0.9s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  .hero .lede{
+    margin-top:22px; font-size:18px; color:#37362f; max-width:46ch;
+    opacity:0; transform:translateY(14px);
+    animation:rise 0.9s cubic-bezier(.2,.7,.3,1) forwards;
+    animation-delay:0.12s;
+  }
+  @keyframes rise{ to{opacity:1; transform:translateY(0);} }
+ 
+  .frame{
+    aspect-ratio:4/5; background:
+      repeating-linear-gradient(135deg, #dedad2 0 2px, #e8e5df 2px 4px);
+    border:var(--rule);
+    position:relative;
+    display:flex; align-items:flex-end; justify-content:flex-start;
+  }
+  .frame::before{
+    content:"01"; position:absolute; top:14px; left:14px;
+    font-family:'Work Sans', sans-serif; font-size:12px; letter-spacing:0.06em; color:var(--grey);
+  }
+  .frame-cap{
+    font-size:12px; color:var(--grey); padding:12px 14px; background:rgba(250,250,248,0.82);
+    width:100%; border-top:var(--rule);
+  }
+ 
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px 28px; margin-top:34px;
+    padding-top:22px; border-top:var(--rule);
+    font-size:14px; color:var(--grey);
+  }
+  .hero-meta b{color:var(--ink); font-weight:500;}
+ 
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ink); color:var(--paper);
+    padding:14px 26px; font-size:15px; font-weight:500;
+    border:none; cursor:pointer; text-decoration:none;
+    transition:background 0.2s ease;
+  }
+  .cta:hover{background:var(--safelight-dim);}
+  .cta.ghost{
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
+  }
+  .cta.ghost:hover{background:var(--ink); color:var(--paper);}
+  .hero-cta{margin-top:30px; display:flex; gap:14px; flex-wrap:wrap;}
+ 
+  /* ---------- section shell ---------- */
+  section{padding:64px 0; border-bottom:var(--rule);}
+  .eyebrow{font-size:13px; color:var(--safelight); font-weight:500; margin-bottom:10px;}
+  .section-head{max-width:640px; margin-bottom:40px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-head p{margin-top:14px; color:var(--grey); font-size:16px;}
+ 
+  /* ---------- audience ---------- */
+  .audience-list{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border-top:var(--rule);
+  }
+  .audience-list div{
+    padding:26px 22px 26px 0; border-right:var(--rule);
+  }
+  .audience-list div:last-child{border-right:none;}
+  .audience-list p{font-size:16px;}
+  .audience-list span{display:block; font-size:13px; color:var(--grey); margin-bottom:8px;}
+ 
+  /* ---------- packages ---------- */
+  .packages{display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:var(--rule); border-left:var(--rule);}
+  .package{border-right:var(--rule); border-bottom:var(--rule); padding:34px 30px;}
+  .package.featured{background:var(--paper-dim);}
+  .package-label{font-size:13px; color:var(--grey); display:flex; justify-content:space-between; margin-bottom:18px;}
+  .package h3{font-size:24px; margin-bottom:6px;}
+  .price{font-family:'Fraunces', serif; font-size:40px; margin:14px 0 20px;}
+  .price sup{font-size:16px; font-weight:400; color:var(--grey); top:-1em;}
+  .package ul{list-style:none; margin-bottom:26px;}
+  .package li{
+    padding:10px 0; border-top:var(--rule); font-size:15px; color:#37362f;
+    display:flex; gap:10px;
+  }
+  .package li::before{content:"—"; color:var(--grey-light); flex-shrink:0;}
+ 
+  /* ---------- process ---------- */
+  .steps{border-top:var(--rule); margin-top:8px;}
+  .step{
+    display:grid; grid-template-columns:64px 1fr; gap:20px;
+    padding:22px 0; border-bottom:var(--rule);
+    align-items:baseline;
+  }
+  .step .n{font-family:'Fraunces', serif; font-style:italic; color:var(--grey-light); font-size:22px;}
+  .step h4{font-family:'Work Sans'; font-weight:500; font-size:16px; margin-bottom:4px;}
+  .step p{color:var(--grey); font-size:15px;}
+ 
+  /* ---------- contact sheet gallery ---------- */
+  .sheet{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:2px;
+    background:var(--ink);
+    border:var(--rule);
+  }
+  .cell{
+    aspect-ratio:1/1; background:#2b2a27;
+    position:relative;
+    background-image:repeating-linear-gradient(100deg, rgba(255,255,255,0.03) 0 3px, transparent 3px 7px);
+  }
+  .cell::after{
+    content:attr(data-n); position:absolute; bottom:8px; left:8px;
+    font-size:11px; color:#9a9891; letter-spacing:0.04em;
+  }
+  .sheet-note{font-size:13px; color:var(--grey); margin-top:14px;}
+ 
+  /* ---------- about ---------- */
+  .about{display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:start;}
+  .about .portrait{
+    aspect-ratio:3/4; background:repeating-linear-gradient(135deg,#dedad2 0 2px,#e8e5df 2px 4px);
+    border:var(--rule);
+  }
+  .about h2{font-size:clamp(24px,3vw,32px); margin-bottom:18px;}
+  .about p{font-size:16.5px; color:#2b2a27; max-width:52ch;}
+  .about p + p{margin-top:14px;}
+  .stat-row{display:flex; gap:38px; margin-top:28px; padding-top:22px; border-top:var(--rule);}
+  .stat b{font-family:'Fraunces', serif; font-size:28px; display:block;}
+  .stat span{font-size:13px; color:var(--grey);}
+ 
+  /* ---------- dates ---------- */
+  .dates{border-top:var(--rule);}
+  .date-row{
+    display:grid; grid-template-columns:1fr 1fr 1fr auto;
+    gap:16px; padding:20px 0; border-bottom:var(--rule);
+    align-items:center;
+  }
+  .date-row .d{font-family:'Fraunces', serif; font-size:20px;}
+  .date-row .city{font-size:15px; color:#37362f;}
+  .date-row .slots{font-size:13px; color:var(--safelight);}
+  .date-row .cta{padding:9px 18px; font-size:13px;}
+  .urgency{font-size:14px; color:var(--grey); margin-top:18px;}
+ 
+  /* ---------- faq ---------- */
+  details{border-bottom:var(--rule); padding:18px 0;}
+  summary{
+    cursor:pointer; font-size:16.5px; font-weight:500; list-style:none;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+"; font-size:20px; color:var(--grey); font-weight:300; transition:transform 0.2s ease;}
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{margin-top:12px; color:var(--grey); font-size:15px; max-width:60ch;}
+ 
+  /* ---------- final cta ---------- */
+  .final{
+    text-align:left; padding:80px 0;
+  }
+  .final h2{font-size:clamp(30px,4.6vw,48px); max-width:14ch;}
+  .final .hero-cta{margin-top:28px;}
+ 
+  footer{padding:32px 0 48px; font-size:13px; color:var(--grey);}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+  .note{
+    font-size:12px; color:var(--safelight); background:rgba(183,49,44,0.07);
+    border:1px dashed rgba(183,49,44,0.4); padding:3px 8px; display:inline-block;
+    margin-left:8px;
+  }
+ 
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .frame{order:-1;}
+    .audience-list{grid-template-columns:1fr;}
+    .audience-list div{border-right:none; border-bottom:var(--rule); padding:20px 0;}
+    .packages{grid-template-columns:1fr;}
+    .about{grid-template-columns:1fr;}
+    .sheet{grid-template-columns:repeat(2,1fr);}
+    .date-row{grid-template-columns:1fr; gap:6px; padding:18px 0;}
+    .date-row .cta{margin-top:8px; width:fit-content;}
+  }
+</style>
+</head>
+<body>
+ 
+  <div class="topbar">
+    <div class="brand">Юлия Алейникова</div>
+    <div class="topbar-cities">Шахты · Ростов-на-Дону</div>
+  </div>
+ 
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Один день съёмки — и вы увидите себя такой, какой вас видят люди, которые вас любят</h1>
+        <p class="lede">Чёрно-белый портрет без глянца и позирования по учебнику. Фотографирую женщин двадцать лет — так, чтобы вы себя узнавали и хотели пересматривать эти кадры.</p>
+        <div class="hero-cta">
+          <a href="#dates" class="cta">Выбрать дату</a>
+          <a href="#packages" class="cta ghost">Пакеты и цены</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>10, 11, 17 октября</b> — Шахты</div>
+          <div><b>18 октября</b> — Ростов-на-Дону</div>
+          <div><b>до 5 человек</b> в день</div>
+        </div>
+      </div>
+      <div class="frame">
+        <img src="images/IMG_7192.jpeg" alt="Чёрно-белый портрет" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+    </div>
+  </header>
+ 
+  <section class="wrap" id="audience">
+    <div class="section-head">
+      <div class="eyebrow">Кому это</div>
+      <h2>Этот день — для вас, если узнаёте себя хотя бы в одном</h2>
+    </div>
+    <div class="audience-list">
+      <div>
+        <span>Давно не фотографировались</span>
+        <p>Последние нормальные фото — на аву два года назад, и вы себе там не нравитесь.</p>
+      </div>
+      <div>
+        <span>Хочется другого взгляда на себя</span>
+        <p>Не «отфотошопленная версия себя», а честный кадр, где видно характер, а не только лицо.</p>
+      </div>
+      <div>
+        <span>Нужен повод собраться</span>
+        <p>День рождения, развод, новый этап — что угодно, что стало причиной сказать себе «пора».</p>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="wrap" id="care">
+    <div class="section-head">
+      <div class="eyebrow">Организация</div>
+      <h2>От вас нужно только прийти — остальное я беру на себя</h2>
+      <p>Студию, стиль и атмосферу я продумываю заранее, чтобы в день съёмки вам оставалось только быть собой.</p>
+    </div>
+    <div class="audience-list">
+      <div>
+        <span>Студия</span>
+        <p>Сама выбираю и бронирую площадку под кадр — вам не нужно искать и созваниваться.</p>
+      </div>
+      <div>
+        <span>Визажист и стилист</span>
+        <p>Работаю только с теми, кого проверила сама: не каждый визажист красит так, как нужно для камеры.</p>
+      </div>
+      <div>
+        <span>Гардероб</span>
+        <p>Можно прийти в своём или выбрать из моего — джинсы и футболка на входе превращаются в образ. Вещи всегда чистые, после каждой съёмки обрабатываются.</p>
+      </div>
+    </div>
+    <p style="margin-top:26px; max-width:62ch; color:#37362f; font-size:16px;">На площадке — вода, кофе и спокойная музыка. Я сама человек эмпатичный, и рядом со мной легко: девочки, которые у меня снимались, часто говорят, что за разговором забывали, что вообще пришли фотографироваться. Позы не «замораживаю» — работаем в лёгком движении, поэтому в кадре нет зажатости.</p>
+  </section>
+ 
+  <section class="wrap" id="packages">
+    <div class="section-head">
+      <div class="eyebrow">Участие</div>
+      <h2>Два формата — выбираете, что нужно именно вам</h2>
+      <p>Оплата фиксирует место в дне съёмки. Мест ограниченное количество.</p>
+    </div>
+    <div class="packages">
+      <div class="package">
+        <div class="package-label"><span>Пакет 1</span><span>Фото + рилс</span></div>
+        <h3>База</h3>
+        <div class="price">6 000 ₽</div>
+        <ul>
+          <li>Съёмка в фотостудии — аренда включена</li>
+          <li>Обработанные чёрно-белые фотографии</li>
+          <li>Готовый рилс с вашей съёмки</li>
+        </ul>
+        <a href="#payment-base" class="cta">Оплатить пакет «База»</a>
+      </div>
+      <div class="package featured">
+        <div class="package-label"><span>Пакет 2</span><span>Полный образ</span></div>
+        <h3>Под ключ</h3>
+        <div class="price">12 900 ₽</div>
+        <ul>
+          <li>Макияж и причёска перед съёмкой</li>
+          <li>Съёмка в фотостудии — аренда включена</li>
+          <li>Обработанные чёрно-белые фотографии</li>
+          <li>Готовый рилс с вашей съёмки</li>
+        </ul>
+        <a href="#payment-full" class="cta">Оплатить пакет «Под ключ»</a>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Как проходит</div>
+      <h2>От оплаты до готовых фото</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <div><h4>Оплачиваете участие</h4><p>Выбираете пакет и дату — место в этот день закреплено за вами.</p></div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <div><h4>Приезжаете в студию</h4><p>В пакете «Под ключ» начинаем с макияжа и причёски, дальше — съёмка.</p></div>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <div><h4>Снимаем</h4><p>Без жёсткого сценария — работаю с вами так, чтобы кадры получились живыми.</p></div>
+      </div>
+      <div class="step">
+        <span class="n">4</span>
+        <div><h4>Получаете фото и рилс</h4><p>Чёрно-белую обработку и готовый рилс присылаю после съёмки.</p></div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Примеры</div>
+      <h2>Контрольный лист</h2>
+      <p>Часть кадров уже на месте — пришлите ещё 5–6 чёрно-белых работ, и соберу полный лист.</p>
+    </div>
+    <div class="sheet">
+      <div class="cell" data-n="02"><img src="images/IMG_7186.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.94;"></div>
+      <div class="cell" data-n="03"><img src="images/IMG_7191.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.94;"></div>
+      <div class="cell" data-n="04"></div>
+      <div class="cell" data-n="05"></div>
+      <div class="cell" data-n="06"></div>
+      <div class="cell" data-n="07"></div>
+      <div class="cell" data-n="08"></div>
+      <div class="cell" data-n="09"></div>
+    </div>
+  </section>
+ 
+  <section class="wrap about" id="about">
+    <div class="portrait"><img src="images/IMG_7172.jpeg" alt="Съёмка Юлии Алейниковой" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div>
+      <div class="eyebrow">Автор</div>
+      <h2>Юлия Алейникова</h2>
+      <p>Фотографирую двадцать лет — начинала со свадеб, потом ушла в портрет и работу с женщинами. Знаю, как за один час снять не «фотку для документов», а кадр, в который хочется всматриваться.</p>
+      <p>Мой ориентир простой: если вы сами себе нравитесь на фото и вам приходят комплименты в сети — значит, съёмка удалась.</p>
+      <div class="stat-row">
+        <div class="stat"><b>20 лет</b><span>в фотографии</span></div>
+        <div class="stat"><b>2 города</b><span>Шахты и Ростов-на-Дону</span></div>
+        <div class="stat"><b>≤5 мест</b><span>в каждый день съёмки</span></div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="wrap dates" id="dates">
+    <div class="section-head">
+      <div class="eyebrow">Даты</div>
+      <h2>Выберите день</h2>
+    </div>
+    <div class="date-row">
+      <div class="d">10 октября</div>
+      <div class="city">г. Шахты</div>
+      <div class="slots">до 5 мест</div>
+      <a href="#payment-oct10" class="cta">Оплатить</a>
+    </div>
+    <div class="date-row">
+      <div class="d">11 октября</div>
+      <div class="city">г. Шахты</div>
+      <div class="slots">до 5 мест</div>
+      <a href="#payment-oct11" class="cta">Оплатить</a>
+    </div>
+    <div class="date-row">
+      <div class="d">17 октября</div>
+      <div class="city">г. Шахты</div>
+      <div class="slots">до 5 мест</div>
+      <a href="#payment-oct17" class="cta">Оплатить</a>
+    </div>
+    <div class="date-row">
+      <div class="d">18 октября</div>
+      <div class="city">г. Ростов-на-Дону</div>
+      <div class="slots">до 5 мест</div>
+      <a href="#payment-oct18" class="cta">Оплатить</a>
+    </div>
+    <p class="urgency">Каждый день — не более пяти человек, чтобы у каждой было время на нормальную съёмку, а не конвейер.</p>
+  </section>
+ 
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Вопросы</div>
+      <h2>Если сомневаетесь</h2>
+    </div>
+    <details open>
+      <summary>А если я стесняюсь фотографироваться?</summary>
+      <p>Это самая частая причина прийти именно на такую съёмку. За двадцать лет работы с женщинами я умею снимать так, чтобы напряжение уходило в первые 10–15 минут.</p>
+    </details>
+    <details>
+      <summary>Что если я не успею на эти даты?</summary>
+      <p>Следующий фотодень будет позже — но количество мест ограничено уже на эти даты, так что лучше не откладывать бронирование.</p>
+    </details>
+    <details>
+      <summary>Сколько фото я получу?</summary>
+      <p>[УТОЧНИТЬ: точное количество обработанных фото в каждом пакете]</p>
+    </details>
+    <details>
+      <summary>Как оплатить и что после оплаты?</summary>
+      <p>Нажимаете «Оплатить» у выбранной даты и пакета. [УТОЧНИТЬ: способ оплаты — ссылка/номер карты/СБП, и куда придёт подтверждение]</p>
+    </details>
+  </section>
+ 
+  <section class="wrap final">
+    <div class="eyebrow">Места ограничены</div>
+    <h2>Займите место в ближайшем фотодне</h2>
+    <div class="hero-cta">
+      <a href="#dates" class="cta">Выбрать дату и оплатить</a>
+    </div>
+  </section>
+ 
+  <footer class="wrap">
+    <div class="footer-grid">
+      <div>Юлия Алейникова · чёрно-белая портретная съёмка</div>
+      <div>Связь: [УТОЧНИТЬ: Telegram / WhatsApp / Instagram]<span class="note">заполнить</span></div>
+    </div>
+  </footer>
+ 
+</body>
+</html>
